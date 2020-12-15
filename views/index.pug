@@ -17,49 +17,48 @@ html
       .col.s12.m2
           .col.s5.m12
           .col.s2.m12
-            h1#logo.light-green.darken-3.white-text MB
           .col.s5.m12
-        .col.s12.m8
+          .col.s12.m8
           h1= title
-          h6 Welcome to #{title}!
+          h6 Welcome to #{title}
           br
-        .col.s0.m2
-        /h1(style='color: #ffffff')= title
-        /p(style=" color: #e0e0e0 ") Oh What A Day! Tell your frineds a bit about it.
+          .col.s0.m2
         
       .row
-        /.col.s0.m0.l1
-        /.col.s12.m6.l3.xl3.blue-grey.darken-4.hoverable
-          /h3(style=" color: #1565c0 ") Welcome to What A Day!
-          /p(style=" color: #e0e0e0 ") Share your thoughts and feeling throughout your day, with friends or stranges.
+      .container
+        p See what others have told about their day and post about yours after logging in.
+        .col.s12.m3.l3.xl4.light-green.lighten-5.hoverable.border
+          .col.s6.m12.l12.xl6
+            p.red-text= logMessage
+            h5 Log In
+              form(method='POST' action='/posts/login')
+                .form-group.input-field
+                  input#name.form-control(type='text' placeholder='Enter username here' name='loginuser')
+                  label(for='username') Username
+                .form-group.input-field
+                  input#password.form-control(type='password' placeholder='Enter password here' name='loginpassword')
+                  label(for='pwd') Password
+                button.btn.light-green.waves-effect(type='submit') Log In
+            br
 
-          /.row
-            /h3(style=" color: #1565c0 ") Log In to make a post.
-            /form(method="POST" action="/posts/login")
-              /.form-group.col.s10.offset-s1
-                /label(for='username') Username
-                /input#name.form-control(type='text' placeholder='Enter username here' name='loginuser')
-              /.form-group.col.s10.offset-s1
-                /label(for='pwd') Password
-                /input#password.form-control(type='password' placeholder='Enter password here' name='loginpassword')
-              /button.btn.blue.darken-3.waves-effect.waves-light(type='submit') Log In
-        
             p(style=" color: #e0e0e0 ") or
             form(method="POST" action="/getin")
-              button.btn.blue.darken-3.waves-effect.waves-light(type='submit' name='action') Sign up
+              button.btn.light-green.waves-effect(type='submit' name='action') Sign up
             p
           
         .col
-      
-        .col.s12.m6.l4.xl4.blue-grey.darken-4.hoverable
-          .col
-            h4(style=" color: #1565c0 ") What's going on?
-            each post in post_list
-              .row.s8.m6.blue.lighten-4
-                p.left-align #{post.author}: #{post.content} - #{post.time} - #{post.date}
+        .col.s0.m1
+          .row
+            .col.s12.m0
+        .col.s12.m8.l8.xl7.light-green.lighten-5.hoverable.border
+          .container
+            ul
+            each post in post_list.reverse()
+              li.left-align #{post.author}: #{post.content} - #{post.time}
             else
-              p(style=" color: #e0e0e0 ") There are no posts yet, log in and be the first one to post something!
-      
+              p.left-align No posts yet :(
+            ul
+            
     
   br
   p © Roosa Hynninen, 2020

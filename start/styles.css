@@ -1,4 +1,4 @@
-body {
+/*body {
   text-align: center;
   background-color: white;
   font-family: serif;
@@ -27,9 +27,9 @@ input {
   border: none;
   border-bottom: 2px solid black;
   height: 22px;
-}
+}*/
 
-/*body {
+body {
   text-align: center;
   background-color: white;
   font-family: serif;
@@ -58,4 +58,4 @@ input {
 
 .border {
   border: 1px solid black;
-}*/
+}
