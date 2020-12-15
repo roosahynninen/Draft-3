@@ -13,12 +13,6 @@ html
       
     body
       .row.gray.lighten-2
-      .container
-      .col.s12.m2
-          .col.s5.m12
-          .col.s2.m12
-          .col.s5.m12
-          .col.s12.m8
           h1= title
           h6 Welcome to #{title}
           br
@@ -40,7 +34,6 @@ html
                   label(for='pwd') Password
                 button.btn.light-green.waves-effect(type='submit') Log In
             br
-
             p(style=" color: #e0e0e0 ") or
             form(method="POST" action="/getin")
               button.btn.light-green.waves-effect(type='submit' name='action') Sign up
