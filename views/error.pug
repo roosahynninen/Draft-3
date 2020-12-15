@@ -2,12 +2,8 @@ doctype html
 html
   head
     title= title
-    meta(charset='utf-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1')
-    style
-      include ../start/styles.css
-    
-  body
+    link(rel='stylesheet', href='/start/styles.css')
+
     h1= message
     h2= error.status
     pre #{error.stack}

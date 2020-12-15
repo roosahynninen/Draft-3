@@ -1,9 +1,19 @@
-var http = require("http");
+var express = require("express");
+var router = express.Router();
 
-//create a server object:
-http
-  .createServer(function(req, res) {
-    res.write("Hello World!"); //write a response to the client
-    res.end(); //end the response
-  })
-  .listen(8080); //the server object listens on port 8080
+/*GET home page. */
+router.get("/", function (req, res, next) {
+  // Retreiving the posts from the global var
+  var post_list = req.app.get("poststore");
+
+  res.render("index", {
+    title: "What A day!",
+    post_list: post_list
+  });
+});
+
+router.post("/getin", function (req, res, next) {
+  res.redirect("/signup");
+});
+
+module.exports = router;
