@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(rel='stylesheet', href='/styles.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+
+    style
+      include ../start/styles.css
+  body
+    .row.indigo.darken-4
+      h1(style=" color: #ffffff  ")= title
+      p(style=" color: #e0e0e0 ") Welcome to #{title}, please sign up to proceed
+
+    .container.blue-grey.darken-4.hoverable
+      .row
+        h3(style=" color: #1565c0 ") Sign Up
+        form(method="POST" action="/posts/signup")
+          .form-group.col.s10.offset-s1
+            label(for='username') Username
+            input#name.form-control(type='text' placeholder='Enter username here' name='signupuser')
+          .form-group.col.s10.offset-s1
+            label(for='pwd') Password
+            input#password.form-control(type='password' placeholder='Enter password here' name='signuppassword')
+          button.btn.blue.darken-3.waves-effect.waves-light(type='submit') Sign Up
+          br
+          p
+
+    br
+    p © Roosa Hynninen, 2020
