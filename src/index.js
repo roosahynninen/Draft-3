@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
 
-/*GET home page. */
+// rendering index.js (log in/sign up view)
 router.get("/", function (req, res, next) {
-  // Retreiving the posts from the global var
+  // retreiving the posts from the var
   var post_list = req.app.get("poststore");
 
   res.render("index", {
-    title: "What A day!",
+    title: "What A Day!",
     post_list: post_list
   });
 });
