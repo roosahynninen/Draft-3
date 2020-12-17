@@ -28,3 +28,9 @@ input {
 .border {
   border: 1px solid black;
 }
+
+.alert {
+  text-align: center;
+  background-color: white;
+  font-family: serif;
+}

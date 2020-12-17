@@ -78,7 +78,7 @@ router.post("/create", sanitizeBody("*").trim().escape(), function (
         time: time,
         date: date1
       });
-      console.log("post added!");
+      console.log("Post added!");
 
       res.redirect("/posts");
     }
