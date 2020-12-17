@@ -1,29 +1,28 @@
 // Author: Roosa Hynninen
 // Web applications final project
 
-// Required libraries
+// required libraries
 var express = require("express");
 var router = express.Router();
-var loggeduser;
+var log_user;
 
-// Good validation documentation available at https://express-validator.github.io/docs/
+// good validation documentation available at https://express-validator.github.io/docs/
 const { sanitizeBody } = require("express-validator");
 
-// Get posts listing
+// getting listing of posts
 router.get("/", function (req, res, next) {
-  // Retreiving the posts from the global var
+  // retreiving posts from global var
   var data = req.app.get("poststore");
 
-  // Just send the array of objects to the browser
+  // sending array of objects to browser
   res.render("posts", {
-    title: "Post List",
     post_list: data
   });
 });
 
-// Sanitation middleware
-// See https://express-validator.github.io/docs/sanitization-chain-api.html
-// And https://express-validator.github.io/docs/filter-api.html
+// sanitation middleware
+// https://express-validator.github.io/docs/sanitization-chain-api.html
+// https://express-validator.github.io/docs/filter-api.html
 router.post("/create", sanitizeBody("*").trim().escape(), function (
   req,
   res,
@@ -33,45 +32,45 @@ router.post("/create", sanitizeBody("*").trim().escape(), function (
   var local_author = req.body.author;
   var date = new Date();
   var hour = date.getHours() + 3;
-  var minute = date.getMinutes();
-  var second = date.getSeconds();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
   var day = date.getDate();
-  var month = date.getMonth() + 1;
-  var year = date.getFullYear();
-  var checked = req.body.checkbox;
+  var mon = date.getMonth() + 1;
+  var a = date.getFullYear();
+  var check = req.body.checkbox;
 
-  var tunti = String(hour);
+  var h = String(hour);
 
-  if (tunti === "24") {
+  if (h === "24") {
     hour = "00";
   }
-  if (tunti === "25") {
+  if (h === "25") {
     hour = "01";
   }
-  var minuutti = String(minute);
+  var m = String(min);
 
-  if (minuutti.length === 1) {
-    minute = "0" + minuutti;
+  if (m.length === 1) {
+    min = "0" + m;
   }
 
-  var sekuntti = String(second);
+  var s = String(sec);
 
-  if (sekuntti.length === 1) {
-    second = "0" + sekuntti;
+  if (s.length === 1) {
+    sec = "0" + s;
   }
 
-  var time = hour + ":" + minute;
-  var date1 = day + "." + month + "." + year;
+  var time = hour + ":" + min;
+  var date1 = day + "." + mon + "." + a;
 
-  if (checked === "YES") {
-    local_author = loggeduser;
+  if (check === "YES") {
+    local_author = log_user;
   }
 
   console.log("We got content: " + local_content);
   console.log("from author: " + local_author);
   console.log("Time: " + time, date1);
 
-  if (local_content.length <= 120) {
+  if (local_content.length <= 400) {
     if (local_content && local_author !== "") {
       req.app.get("poststore").unshift({
         author: local_author,
@@ -110,7 +109,7 @@ router.post("/login", sanitizeBody("*").trim().escape(), function (
     console.log(users[i].user);
     if (users[i].user === local_user) {
       if (users[i].pass === local_password) {
-        loggeduser = users[i].user;
+        log_user = users[i].user;
         found++;
       }
     }
